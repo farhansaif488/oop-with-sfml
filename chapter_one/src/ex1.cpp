@@ -5,7 +5,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(640,480),"SFML APPLICAION");
     sf::CircleShape shape;
     
-    shape.setRedius(40,f);
+    shape.setRadius(40.f);
     shape.setPosition(100.f,100.f);
     shape.setFillColor(sf::Color::Cyan);
     
@@ -16,7 +16,7 @@ int main()
         {
             if(event.type == sf::Event::Closed)
             {
-                window.Close();
+                window.close();
             }
             window.clear();
             window.draw(shape);
