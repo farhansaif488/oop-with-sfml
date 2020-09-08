@@ -1,15 +1,26 @@
 #include <SFML/Graphics.hpp>
 
-int main()
-{
-    //create the window
+
+   sf::CircleShape create_object()
+    {
+        sf::CircleShape shape(100.f);
+        shape.setFillColor(sf::Color::Red);
+        return shape;
+    }
+
+class A{
+    public:
+
+    void create_window(int f)
+    {
+         //create the window
     sf::RenderWindow window(sf::VideoMode(800,600),"Game window",sf::Style::Default);
 
 
     //shape declarartion
-
-    sf::CircleShape shape(100.f,100,500);
-    shape.setFillColor(sf::Color::Green);
+    
+    sf::CircleShape shape;
+    if(f==1) shape = create_object();
 
     //run the code as long as the window is open
     while(window.isOpen())
@@ -28,8 +39,18 @@ int main()
 
         //clear the window with black color 
 
-        window.clear(sf::Color::Black);
-        window.draw(shape);
+        window.clear(sf::Color::Yellow);
+       // create_object(window);
+        if(f==1)window.draw(shape);
         window.display();
     }
+
+    }
+};
+
+
+int main()
+{
+   A obj;
+   obj.create_window(1);
 }
