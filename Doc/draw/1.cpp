@@ -1,7 +1,7 @@
 //Graphics
 //minimal api documentation
 //author : Farhan Saif
-//date : 7th spet;2020
+//date : 8th spet;2020
 
 //goal :: our aim is to create modular code from the
 //        existing code of previous folder "win_man"
@@ -17,15 +17,21 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
-using namespace std;
-void xwindow(int x,int y,int rx,int rl,string s)
+
+void xwindow(int x,int y,int rx,int ry,string s)
 {
     sf::RenderWindow window(sf::VideoMode(x,y),s,sf::Style::Default);
 
-    window.setPosition(sf::Vector2i(rl,ry));//position the window with respect to desktop
+    window.setPosition(sf::Vector2i(rx,ry));//position the window with respect to desktop
     //window.setKeyRepeatEnabled(); 	
     //doesnt work
 
+
+    //checking a graphics undr keyboard control
+    sf::CircleShape shape(100.f);
+   shape.setFillColor(sf::Color::Green);
+    
+    
     while(window.isOpen())
     {
         //check all the windows events that
@@ -46,13 +52,21 @@ void xwindow(int x,int y,int rx,int rl,string s)
             }*/
             else if(event.type == sf::Event::KeyPressed)
             {
-                if(event.key.code == sf::Keyboard::Space)
+                /*if(event.key.code == sf::Keyboard::Space)
                 {
                     std::cout << "the Space key was pressed"<<std::endl;
                     std::cout << "control :"<< event.key.control <<std::endl;
                     std::cout << "alt:"<< event.key.alt<<std::endl;
                     std::cout << "shift:"<< event.key.shift <<std::endl;
                     std::cout << "system"<< event.key.system <<std::endl;
+                }*/
+                if(event.key.code == sf::Keyboard::Space)
+                {
+                    //sf::CircleShape shape(100.f);
+                    //shape.setFillColor(sf::Color::Green);
+                    window.clear();
+                    
+                    window.display();
                 }
             }
 
@@ -73,7 +87,9 @@ void xwindow(int x,int y,int rx,int rl,string s)
             }
           
         }
+        
         window.clear();
+        window.draw(shape);
         window.display();
     }
 
@@ -83,7 +99,7 @@ int main()
 {
     for(auto i=0;i<3;i++)
     {
-        xwindow();
+        xwindow(800,500,400,500,"Title");
     }
 }
 
